@@ -18,7 +18,7 @@ if(isset($_POST['login_username'])){
 	}
 	else
 	{
-		echo "pooo";
+		echo "error";
 	}
 	
 }
