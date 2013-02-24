@@ -7,8 +7,7 @@
 <body>
 	
 <?php
-
-	include "registration_form.php";
+	include "login_form.php";
 ?>
 
 
