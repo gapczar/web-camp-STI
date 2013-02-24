@@ -8,6 +8,23 @@ if(isset($_SESSION['user_id'])){
 	$userqry = mysql_query($getuser) or die(mysql_error());
 	$userdata = mysql_fetch_assoc($userqry);
 	echo $userdata["username"];
+
+	function votechecker($userid)
+	{
+		$getallvotesbyusertxt = "select * from votes where userid = '" . $_SESSION["user_id"] . "'";
+		$getallvotesbyuserqry = mysql_query($getallvotesbyusertxt) or die(mysql_error());
+		$getallvotesbyuser = mysql_fetch_assoc($getallvotesbyuserqry);
+
+		$votesbyuser = count($getallvotesbyuser);
+		if($votesbyuser>5)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 }
 ?>
 <html>
@@ -17,11 +34,16 @@ if(isset($_SESSION['user_id'])){
 	</head>
 <body>
 	
-<?php
+<?php/*
+elseif(!isset($_SESSION['user_id'])){
+{
 	include "registration_form.php";
 	include "login_form.php";
+}
+	*/?>
+
+
 
 	
-?>
 </body>
 </html>
