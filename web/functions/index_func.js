@@ -4,7 +4,7 @@ $(document).ready(function(){
 			$('#login_loader').show();
 			$('#login_handler_btn').hide();
 			var login_serialize=$('#login_form').serialize();
-
+			var checker=check_form('#login_form');
 			$.post("/index_ajax.php",login_serialize,function(data){
 				var data1=$.trim(data);
 				if(data1!="error"){	
