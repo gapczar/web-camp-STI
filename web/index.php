@@ -9,7 +9,16 @@ if(isset($_SESSION['user_id'])){
 
 if(isset($_POST["app_vote"]))
 {
-	
+	$votes = $_POST["app_vote"];
+	$i = 0;
+	while($i< count($votes))
+	{
+		$savetodbtxt = "insert into votes(ma_id, userid,date_time_voted) values(" . $votes[$i] . ", '" . $_SESSION["user_id"] . "', '" . date("F j, Y HH:mm:ss") . "')";
+		$savetodbqry = mysql_query($savetodbtxt) or die(mysql_error());
+		$i++;
+	}
+	print_r($_POST["app_vote"]);
+	header("Location:votingpage.php");
 }	
 
 	function votechecker($userid)
@@ -124,7 +133,7 @@ if(isset($_POST["app_vote"]))
 					<div class='apps-img' style='height: 148px; border: 1px solid #ccc; background: url(images/" . $r["mai_filename"] . "." . $r["mai_filetype"] . ") center; background-size: cover;'></div>
 				</label>
 				<span class='app_vote_name'>{$r['mai_filename']}</span>
-				<input type='checkbox' name='app_vote' id='app_vote_id{$r['mai_id']}' class='app_v' value='" . $r["mai_id"] . "' />
+				<input type='checkbox' name='app_vote[]' id='app_vote_id{$r['mai_id']}' class='app_v' value='" . $r["mai_id"] . "' />
 			</div>
 			";
 			$arr[] = $r["mai_filename"];
