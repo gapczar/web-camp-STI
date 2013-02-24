@@ -6,11 +6,10 @@
 	</head>
 <body>
 	
-
 <?php
+
 	include "registration_form.php";
 ?>
-		
 
 
 </body>
