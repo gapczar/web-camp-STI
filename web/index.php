@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <?php
 include ("connection.php");
-if($handle = opendir("../apps-list/images"))
-{
-	while(false !== ($entry = readdir($handle)))
-	{
-		$filedata = explode(".", $entry);
-		$filename = $filedata[0];
-		$filetype = $filedata[1];
-		$saveimgqry = "insert into mobile_app_img (mai_filename, mai_filetype) values ('" . $filename . "', '" . $filetype . "')";
-		$saveimg = mysql_query($saveimgqry) or die(mysql_error());
-	}
+if(isset($_SESSION['user_id'])){
+	echo "set na";
+	echo $_SESSION['user_id'];
+	session_destroy();
 }
 ?>
 <html>

@@ -2,16 +2,10 @@ $(document).ready(function(){
 	init_loaders();
 	$('#login_handler').click(function(){
 
-		var login_serialize=$('#login_form').serialize();
-		$.post("/index_ajax.php",login_serialize,function(data){
-
-			alert(data);
-		});
-
 			$('#login_loader').show();
 			$('#login_handler_btn').hide();
 			var login_serialize=$('#login_form').serialize();
-
+			var checker=check_form('#login_form');
 			$.post("/index_ajax.php",login_serialize,function(data){
 				var data1=$.trim(data);
 				if(data1!="error"){	
@@ -20,6 +14,7 @@ $(document).ready(function(){
 							$('#login_loader').hide();
 					},2000);
 				}else{
+							window.location.href='index.php'
 							$('#login_handler_btn').show();
 							$('#login_loader').hide();
 				}

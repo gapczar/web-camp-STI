@@ -9,12 +9,11 @@ if(isset($_POST['login_username'])){
 
 	$getuserqry = "select * from users where username = '" .$username . "' and password = '" . $password . "'";
 	$getuser = mysql_query($getuserqry) or die(mysql_error());
-
-	echo $getuserqry;
-
-	if(count($getuser) == 0)
-	{
-		echo "pewpewpew";
+	$count=mysql_num_rows($getuser);
+	if( $count!= 0){
+		$row=mysql_fetch_assoc($getuser);
+		$_SESSION['user_id']=$row['userid'];
+		header("Location:index.php");
 	}
 	else
 	{
