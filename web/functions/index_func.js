@@ -29,10 +29,17 @@ $(document).ready(function(){
 			var checker=check_form('#register_form');
 			if(checker){
 				$.post("/index_ajax.php",registration_serialize,function(data){
+					var data1=$.trim(data);
+					alert(data);
+					if(data1.length==0){
+						window.location.href="index.php";
+					}else{
+						alert("ERROR");
+					}
 					setTimeout(function(){
 						$('#regi_loader').hide();
 						$('#registration_handler').show();
-					},2000);
+					},2000);	
 				});
 			}else{
 				alert("Incorrect registration details.");

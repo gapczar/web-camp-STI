@@ -2,9 +2,7 @@
 <?php
 include ("connection.php");
 if(isset($_SESSION['user_id'])){
-	echo "set na";
-	echo $_SESSION['user_id'];
-	session_destroy();
+	
 }
 ?>
 <html>
@@ -15,7 +13,6 @@ if(isset($_SESSION['user_id'])){
 <body>
 	
 <?php
-
 	include "registration_form.php";
 	include "login_form.php";
 ?>
