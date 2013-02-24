@@ -76,3 +76,7 @@ function check_form(obj){
 	});
 	return boool;
 }
+
+function submit_vote_apps(){
+	alert('leser');
+}
